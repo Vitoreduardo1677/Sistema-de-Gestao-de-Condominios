@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Manutenção</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Condomínio</h1>
+    <h2>Cadastrar Manutenção</h2>
+
+    <p id="msg" class="msg" hidden></p>
+
+    <form id="form" class="cadastro">
+        <label for="tipo">Tipo de manutenção:</label>
+        <select id="tipo" required></select>
+
+        <label for="data">Data:</label>
+        <input type="date" id="data" required>
+
+        <label for="local">Local:</label>
+        <input type="text" id="local" required>
+
+        <div class="botoes">
+            <button type="submit" class="btn btn-verde">Cadastrar</button>
+            <a class="btn btn-cinza" href="/index.html">Voltar</a>
+        </div>
+    </form>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/manutencao.js"></script>
+</body>
+</html>

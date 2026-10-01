@@ -1,34 +1,421 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: Arial, Helvetica, sans-serif; background: #f4f6f8; padding: 20px; text-align: center; color: #333; }
-h1 { color: #2c3e50; margin-bottom: 5px; }
-h2 { color: #2c3e50; margin-bottom: 20px; font-weight: normal; }
+/* ==========================================================
+   Sistema de Gestão de Condomínio — folha de estilo
+   Compatível com o HTML atual (não precisa alterar nada).
+   Direção: sóbria e administrativa. Faixa de cabeçalho em
+   verde-pinheiro com filete latão; o resto fica silencioso.
+   ========================================================== */
+
+/* ---------- Tokens ---------- */
+:root {
+    --pine: #12343b;
+    --pine-2: #1b4a52;
+    --brass: #c49a4a;
+
+    --bg: #edf0ee;
+    --surface: #ffffff;
+    --surface-alt: #f5f7f6;
+    --line: #d9dfdc;
+    --ink: #1a2a2d;
+    --ink-soft: #5b6b6e;
+
+    --primary: #1d6b78;
+    --primary-hover: #165562;
+    --success: #1f7a56;
+    --success-hover: #18634a;
+    --danger: #b3372f;
+    --danger-hover: #932b25;
+    --neutral: #5f6f73;
+    --neutral-hover: #4a585b;
+
+    --ok-bg: #e2f3ea;   --ok-fg: #17603f;   --ok-bar: #1f7a56;
+    --err-bg: #fbe7e5;  --err-fg: #8f2a24;  --err-bar: #b3372f;
+
+    --radius: 10px;
+    --radius-sm: 7px;
+    --shadow: 0 1px 2px rgba(18, 52, 59, .06), 0 6px 20px rgba(18, 52, 59, .07);
+    --font: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Roboto, Arial, sans-serif;
+    --w: 960px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --pine: #0c1f24;
+        --pine-2: #12303a;
+
+        --bg: #101a1d;
+        --surface: #172428;
+        --surface-alt: #1d2d32;
+        --line: #2a3d43;
+        --ink: #e6eeee;
+        --ink-soft: #93a7ab;
+
+        --primary: #2e93a4;
+        --primary-hover: #3aa6b8;
+        --success: #2f9a70;
+        --success-hover: #3ab182;
+        --danger: #d3544b;
+        --danger-hover: #e0675e;
+        --neutral: #6d8084;
+        --neutral-hover: #81959a;
+
+        --ok-bg: #153327;   --ok-fg: #8fe0b9;
+        --err-bg: #3a1c1a;  --err-fg: #f2a9a3;
+        --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
+    }
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 [hidden] { display: none !important; }
 
-table { margin: 20px auto; border-collapse: collapse; width: 80%; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
-th { background: #3498db; color: #fff; padding: 12px; }
-td { padding: 10px; border-bottom: 1px solid #ddd; }
-tbody tr { cursor: pointer; }
-tbody tr:hover { background: #f1f1f1; }
-.acoes { display: flex; justify-content: center; gap: 10px; }
+html { -webkit-text-size-adjust: 100%; }
 
-.btn { display: inline-block; border: none; cursor: pointer; text-decoration: none; color: #fff; padding: 8px 12px; border-radius: 5px; font-size: 14px; transition: .3s; }
-.btn-azul { background: #3498db; } .btn-azul:hover { background: #2980b9; }
-.btn-vermelho { background: #e74c3c; } .btn-vermelho:hover { background: #c0392b; }
-.btn-verde { background: #2ecc71; } .btn-verde:hover { background: #27ae60; }
-.btn-cinza { background: #7f8c8d; } .btn-cinza:hover { background: #636e72; }
+body {
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink);
+    background: var(--bg);
+    min-height: 100vh;
+    padding-bottom: 56px;
+    -webkit-font-smoothing: antialiased;
+}
 
-.busca { display: flex; justify-content: center; gap: 10px; align-items: center; flex-wrap: wrap; }
-.busca input { padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 260px; }
+/* ---------- Cabeçalho (h1) e título da página (h2) ---------- */
+h1 {
+    background: linear-gradient(180deg, var(--pine-2), var(--pine));
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    padding: 18px max(20px, calc((100% - var(--w)) / 2));
+    border-bottom: 3px solid var(--brass);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-form.cadastro { background: #fff; padding: 25px; margin: 0 auto; width: 320px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.1); text-align: left; }
-form.cadastro label { font-weight: bold; color: #2c3e50; display: block; margin-top: 10px; }
-form.cadastro input { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; }
-form.cadastro input[readonly] { background: #eee; }
-form.cadastro .botoes { margin-top: 20px; display: flex; gap: 10px; justify-content: center; }
+/* marca: pequeno edifício desenhado em CSS */
+h1::before {
+    content: "";
+    width: 22px;
+    height: 24px;
+    border: 2px solid var(--brass);
+    border-radius: 3px 3px 0 0;
+    background:
+        linear-gradient(var(--brass), var(--brass)) 3px 4px / 4px 4px no-repeat,
+        linear-gradient(var(--brass), var(--brass)) 11px 4px / 4px 4px no-repeat,
+        linear-gradient(var(--brass), var(--brass)) 3px 12px / 4px 4px no-repeat,
+        linear-gradient(var(--brass), var(--brass)) 11px 12px / 4px 4px no-repeat;
+    flex: none;
+}
 
-.msg { width: 80%; max-width: 420px; margin: 0 auto 15px; padding: 10px; border-radius: 5px; }
-.msg.ok { background: #d5f5e3; color: #1e8449; }
-.msg.erro { background: #fadbd8; color: #c0392b; }
+h2 {
+    font-size: 26px;
+    font-weight: 650;
+    letter-spacing: -.01em;
+    line-height: 1.2;
+    color: var(--ink);
+}
 
-.menu { display: flex; flex-direction: column; gap: 10px; width: 260px; margin: 0 auto; }
-.menu .off { background: #bdc3c7; cursor: not-allowed; }
+/* Todo conteúdo da página fica numa coluna centralizada */
+body > h2,
+body > .busca,
+body > table,
+body > .msg,
+body > .menu,
+body > form.cadastro {
+    width: min(100% - 32px, var(--w));
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body > h2 { margin-top: 36px; margin-bottom: 20px; }
+
+/* ---------- Botões ---------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    transition: background-color .15s, box-shadow .15s, transform .05s;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn-azul     { background: var(--primary); }
+.btn-azul:hover { background: var(--primary-hover); }
+.btn-verde    { background: var(--success); }
+.btn-verde:hover { background: var(--success-hover); }
+.btn-vermelho { background: var(--danger); }
+.btn-vermelho:hover { background: var(--danger-hover); }
+.btn-cinza    { background: var(--neutral); }
+.btn-cinza:hover { background: var(--neutral-hover); }
+
+:focus-visible {
+    outline: 3px solid var(--brass);
+    outline-offset: 2px;
+}
+
+/* ---------- Barra de pesquisa ---------- */
+.busca {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    box-shadow: var(--shadow);
+}
+.busca label { color: var(--ink-soft); font-size: 14px; }
+.busca label b { font-weight: 600; }
+.busca input {
+    flex: 1 1 220px;
+    min-width: 0;
+    width: auto;
+}
+
+/* ---------- Campos ---------- */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="search"],
+input[type="tel"],
+select {
+    font: inherit;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    transition: border-color .15s, box-shadow .15s;
+}
+input:hover, select:hover { border-color: var(--ink-soft); }
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 25%, transparent);
+}
+input::placeholder { color: var(--ink-soft); opacity: .7; }
+
+select {
+    appearance: none;
+    padding-right: 36px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%235b6b6e' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+input[type="radio"], input[type="checkbox"] { accent-color: var(--primary); width: 16px; height: 16px; }
+
+/* ---------- Tabela ---------- */
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+th {
+    background: var(--surface-alt);
+    color: var(--ink-soft);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+}
+
+td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    font-variant-numeric: tabular-nums;
+    vertical-align: middle;
+}
+tbody tr:last-child td { border-bottom: none; }
+
+tbody tr { cursor: pointer; transition: background-color .12s; }
+tbody tr:hover { background: color-mix(in srgb, var(--primary) 8%, var(--surface)); }
+
+/* coluna de ações alinhada à direita */
+th:last-child, td:last-child { text-align: right; width: 1%; white-space: nowrap; }
+
+.acoes { display: flex; justify-content: flex-end; gap: 8px; }
+.acoes .btn { padding: 6px 12px; font-size: 13px; }
+
+/* ações em estilo suave: cor só no texto, para não gritar na tabela */
+.acoes .btn-azul {
+    background: color-mix(in srgb, var(--primary) 12%, transparent);
+    color: var(--primary);
+    border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+}
+.acoes .btn-azul:hover { background: var(--primary); color: #fff; }
+.acoes .btn-vermelho {
+    background: color-mix(in srgb, var(--danger) 10%, transparent);
+    color: var(--danger);
+    border-color: color-mix(in srgb, var(--danger) 30%, transparent);
+}
+.acoes .btn-vermelho:hover { background: var(--danger); color: #fff; }
+
+/* estado vazio */
+tbody:empty::before {
+    content: "Nenhum registro encontrado.";
+    display: block;
+    padding: 32px 16px;
+    color: var(--ink-soft);
+    text-align: center;
+    cursor: default;
+}
+
+/* ---------- Formulário de cadastro ---------- */
+form.cadastro {
+    width: min(100% - 32px, 460px);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px;
+    text-align: left;
+}
+
+form.cadastro label {
+    display: block;
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+}
+form.cadastro label:first-child { margin-top: 0; }
+
+form.cadastro input,
+form.cadastro select {
+    width: 100%;
+    margin-top: 6px;
+}
+
+form.cadastro input[readonly],
+form.cadastro select:disabled {
+    background: var(--surface-alt);
+    color: var(--ink-soft);
+    border-style: dashed;
+    cursor: default;
+}
+
+form.cadastro .botoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+}
+form.cadastro .botoes .btn { flex: 1; }
+
+/* ---------- Mensagens ---------- */
+.msg {
+    margin-bottom: 16px;
+    padding: 12px 16px 12px 14px;
+    border-radius: var(--radius-sm);
+    border-left: 4px solid;
+    font-size: 14px;
+    font-weight: 500;
+}
+.msg.ok   { background: var(--ok-bg);  color: var(--ok-fg);  border-color: var(--ok-bar); }
+.msg.erro { background: var(--err-bg); color: var(--err-fg); border-color: var(--err-bar); }
+
+/* na tela de formulário a mensagem acompanha a largura do card */
+body > .msg:has(+ form.cadastro) { width: min(100% - 32px, 460px); }
+
+/* ---------- Menu inicial ---------- */
+.menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+}
+
+.menu .btn {
+    justify-content: flex-start;
+    min-height: 84px;
+    padding: 20px 22px;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: left;
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--primary);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: border-color .15s, box-shadow .15s, transform .15s;
+}
+.menu .btn:hover {
+    background: var(--surface);
+    border-left-color: var(--brass);
+    transform: translateY(-2px);
+}
+
+/* itens ainda não disponíveis */
+.menu .off {
+    background: var(--surface-alt);
+    color: var(--ink-soft);
+    border: 1px dashed var(--line);
+    border-left: 4px solid var(--line);
+    box-shadow: none;
+    cursor: not-allowed;
+    font-weight: 500;
+}
+.menu .off:hover { transform: none; border-left-color: var(--line); background: var(--surface-alt); }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 640px) {
+    h1 { font-size: 18px; padding-top: 14px; padding-bottom: 14px; }
+    h2 { font-size: 22px; }
+    body > h2 { margin-top: 24px; }
+
+    .busca { padding: 12px; }
+    .busca label { flex: 1 0 100%; }
+    .busca .btn { flex: 1; }
+
+    form.cadastro { padding: 20px; }
+
+    /* tabela rola na horizontal em vez de estourar a tela */
+    table { display: block; overflow-x: auto; white-space: nowrap; }
+    th, td { padding: 10px 12px; }
+}
+
+/* ---------- Acessibilidade ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; }
+    .btn:active, .menu .btn:hover { transform: none; }
+}
+
+/* ---------- Campos obrigatórios ---------- */
+form.cadastro label:has(+ :required)::after {
+    content: " *";
+    color: var(--danger);
+}
+
+/* só destaca depois que a pessoa mexeu no campo ou tentou enviar */
+form.cadastro input:user-invalid,
+form.cadastro select:user-invalid {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger) 18%, transparent);
+}

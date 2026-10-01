@@ -3,29 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manter Bloco</title>
+    <title>Cadastrar Tipo de Manutenção</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <h1>Condomínio</h1>
-    <h2>Manter Bloco</h2>
+    <h2>Cadastrar Tipo de Manutenção</h2>
 
     <p id="msg" class="msg" hidden></p>
 
     <form id="form" class="cadastro">
-        <label for="descricao">Descrição:</label>
+        <label for="descricao">Descrição da manutenção:</label>
         <input type="text" id="descricao" required>
 
-        <label for="quantidade">Quantidade aptos:</label>
-        <input type="number" id="quantidade" min="1" required>
-
         <div class="botoes">
-            <button type="submit" id="btnSalvar" class="btn btn-verde">Cadastrar</button>
-            <a class="btn btn-cinza" href="/blocos.html">Voltar</a>
+            <button type="submit" class="btn btn-verde">Cadastrar</button>
+            <a class="btn btn-cinza" href="/index.html">Voltar</a>
         </div>
     </form>
 
     <script src="/js/api.js"></script>
-    <script src="/js/bloco-form.js"></script>
+    <script src="/js/tipo-manutencao.js"></script>
 </body>
 </html>

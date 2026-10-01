@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Pagamento</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Condomínio</h1>
+    <h2>Registrar Pagamento</h2>
+
+    <p id="msg" class="msg" hidden></p>
+
+    <form id="form" class="cadastro">
+        <label for="apartamento">Apartamento:</label>
+        <select id="apartamento" required></select>
+
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" readonly>
+
+        <label for="morador">Morador:</label>
+        <input type="text" id="morador" readonly>
+
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" readonly>
+
+        <label for="referencia">Mês/Ano Referência:</label>
+        <select id="referencia" required></select>
+
+        <label for="valor">Valor:</label>
+        <input type="text" id="valor" readonly>
+
+        <label for="vencimento">Vencimento:</label>
+        <input type="text" id="vencimento" readonly>
+
+        <div class="botoes">
+            <button type="submit" class="btn btn-verde">Pagar</button>
+            <a class="btn btn-cinza" href="/index.html">Voltar</a>
+        </div>
+    </form>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/pagamento.js"></script>
+</body>
+</html>

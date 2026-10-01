@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manter Morador</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Condomínio</h1>
+    <h2>Cadastrar Morador</h2>
+
+    <p id="msg" class="msg" hidden></p>
+
+    <form id="form" class="cadastro">
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" maxlength="14" required>
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required>
+
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone">
+
+        <label for="apartamento">Apartamento:</label>
+        <select id="apartamento" required></select>
+
+        <label for="responsavel">Responsável pelo apartamento?</label>
+        <select id="responsavel"><option value="0">Não</option><option value="1">Sim</option></select>
+
+        <label for="proprietario">Proprietário do apartamento?</label>
+        <select id="proprietario"><option value="0">Não</option><option value="1">Sim</option></select>
+
+        <label for="qtdVagas">Quantidade de vagas de garagem:</label>
+        <select id="qtdVagas"><option>0</option><option>1</option><option>2</option></select>
+
+        <div id="boxVaga1" hidden>
+            <label for="vaga1">Número da vaga 1:</label>
+            <input type="number" id="vaga1" min="1">
+        </div>
+        <div id="boxVaga2" hidden>
+            <label for="vaga2">Número da vaga 2:</label>
+            <input type="number" id="vaga2" min="1">
+        </div>
+
+        <label for="possuiVeiculo">Possui veículo?</label>
+        <select id="possuiVeiculo"><option value="0">Não</option><option value="1">Sim</option></select>
+
+        <div id="boxVeiculo" hidden>
+            <h2 style="font-size:18px;margin:24px 0 0;text-align:left">Cadastrar Veículo</h2>
+            <label for="placa">Placa:</label>
+            <input type="text" id="placa" maxlength="10">
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca">
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo">
+        </div>
+
+        <div class="botoes">
+            <button type="submit" id="btnSalvar" class="btn btn-verde">Cadastrar</button>
+            <a class="btn btn-cinza" href="/moradores.html">Voltar</a>
+        </div>
+    </form>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/morador-form.js"></script>
+</body>
+</html>

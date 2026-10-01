@@ -9,13 +9,23 @@
 <body>
     <h1>Condomínio</h1>
     <h2>Menu</h2>
+
+    <p id="msg" class="msg" hidden></p>
+
     <div class="menu">
         <a class="btn btn-azul" href="/blocos.html">Blocos</a>
-        <span class="btn off">Apartamentos (em breve)</span>
-        <span class="btn off">Moradores (em breve)</span>
-        <span class="btn off">Pagamentos (em breve)</span>
-        <span class="btn off">Tipos de manutenção (em breve)</span>
-        <span class="btn off">Manutenções (em breve)</span>
+        <a class="btn btn-azul" href="/apartamentos.html">Apartamentos</a>
+        <a class="btn btn-azul" href="/moradores.html">Moradores</a>
+        <a class="btn btn-azul" href="/pagamento.html">Pagamentos</a>
+        <a class="btn btn-azul" href="/tipo-manutencao.html">Tipos de manutenção</a>
+        <a class="btn btn-azul" href="/manutencao.html">Manutenções</a>
     </div>
+
+    <script src="/js/api.js"></script>
+    <script>
+        // Mensagem vinda de outra tela (ex.: "Dados salvos com sucesso")
+        const msg = new URLSearchParams(location.search).get('msg');
+        if (msg) mostrarMsg(msg, 'ok');
+    </script>
 </body>
 </html>
