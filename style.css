@@ -1,0 +1,34 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, Helvetica, sans-serif; background: #f4f6f8; padding: 20px; text-align: center; color: #333; }
+h1 { color: #2c3e50; margin-bottom: 5px; }
+h2 { color: #2c3e50; margin-bottom: 20px; font-weight: normal; }
+[hidden] { display: none !important; }
+
+table { margin: 20px auto; border-collapse: collapse; width: 80%; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+th { background: #3498db; color: #fff; padding: 12px; }
+td { padding: 10px; border-bottom: 1px solid #ddd; }
+tbody tr { cursor: pointer; }
+tbody tr:hover { background: #f1f1f1; }
+.acoes { display: flex; justify-content: center; gap: 10px; }
+
+.btn { display: inline-block; border: none; cursor: pointer; text-decoration: none; color: #fff; padding: 8px 12px; border-radius: 5px; font-size: 14px; transition: .3s; }
+.btn-azul { background: #3498db; } .btn-azul:hover { background: #2980b9; }
+.btn-vermelho { background: #e74c3c; } .btn-vermelho:hover { background: #c0392b; }
+.btn-verde { background: #2ecc71; } .btn-verde:hover { background: #27ae60; }
+.btn-cinza { background: #7f8c8d; } .btn-cinza:hover { background: #636e72; }
+
+.busca { display: flex; justify-content: center; gap: 10px; align-items: center; flex-wrap: wrap; }
+.busca input { padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 260px; }
+
+form.cadastro { background: #fff; padding: 25px; margin: 0 auto; width: 320px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.1); text-align: left; }
+form.cadastro label { font-weight: bold; color: #2c3e50; display: block; margin-top: 10px; }
+form.cadastro input { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; }
+form.cadastro input[readonly] { background: #eee; }
+form.cadastro .botoes { margin-top: 20px; display: flex; gap: 10px; justify-content: center; }
+
+.msg { width: 80%; max-width: 420px; margin: 0 auto 15px; padding: 10px; border-radius: 5px; }
+.msg.ok { background: #d5f5e3; color: #1e8449; }
+.msg.erro { background: #fadbd8; color: #c0392b; }
+
+.menu { display: flex; flex-direction: column; gap: 10px; width: 260px; margin: 0 auto; }
+.menu .off { background: #bdc3c7; cursor: not-allowed; }

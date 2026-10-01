@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisar Bloco</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Condomínio</h1>
+    <h2>Pesquisar Bloco</h2>
+
+    <p id="msg" class="msg" hidden></p>
+
+    <div class="busca">
+        <label for="busca"><b>Pesquisa:</b></label>
+        <input type="text" id="busca">
+        <a class="btn btn-verde" href="/bloco-form.html?modo=novo">Novo Bloco</a>
+        <a class="btn btn-cinza" href="/index.html">Voltar</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr><th>Descrição</th><th>Qtd Apartamentos</th><th>Ações</th></tr>
+        </thead>
+        <tbody id="tabela"></tbody>
+    </table>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/blocos.js"></script>
+</body>
+</html>
