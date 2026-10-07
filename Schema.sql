@@ -76,3 +76,9 @@ CREATE TABLE manutencao (
 );
 
 INSERT INTO bloco (descricao, quantidade_aptos) VALUES ('Bloco A', 30), ('Bloco B', 25);
+
+select * from bloco;
+select * from apartamento;
+select * from veiculo;
+select * from morador;
+select * from vaga_garagem;
